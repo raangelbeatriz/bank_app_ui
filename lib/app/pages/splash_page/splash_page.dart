@@ -3,6 +3,8 @@ import 'package:bank_app_ui/app/core/utils/size_extension.dart';
 import 'package:bank_app_ui/app/pages/splash_page/widget/slide_page.dart';
 import 'package:flutter/material.dart';
 
+import 'widget/dot_widget.dart';
+
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
@@ -84,15 +86,9 @@ class _SplashPageState extends State<SplashPage> {
                       ),
                       Row(
                         children: [
-                          _currentPage == 0
-                              ? const DotWidget()
-                              : const NormalDot(),
-                          _currentPage == 1
-                              ? const DotWidget()
-                              : const NormalDot(),
-                          _currentPage == 2
-                              ? const DotWidget()
-                              : const NormalDot()
+                          _currentPage == 0 ? const DotWidget() : normalDot(0),
+                          _currentPage == 1 ? const DotWidget() : normalDot(1),
+                          _currentPage == 2 ? const DotWidget() : normalDot(2)
                         ],
                       ),
                     ],
@@ -104,9 +100,23 @@ class _SplashPageState extends State<SplashPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Continue',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          if (_currentPage != _listSlide.length - 1) {
+                            setState(() {
+                              _currentPage++;
+                            });
+                          }
+                        });
+                      },
+                      child: InkWell(
+                        onTap: () {},
+                        child: const Text(
+                          'Continue',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
                     ),
                     RichText(
                       text: TextSpan(
@@ -133,51 +143,22 @@ class _SplashPageState extends State<SplashPage> {
       ),
     );
   }
-}
 
-class NormalDot extends StatelessWidget {
-  const NormalDot({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
-      child: Container(
-        height: 15,
-        width: 15,
-        decoration:
-            BoxDecoration(borderRadius: BorderRadius.circular(15), color: grey),
-      ),
-    );
-  }
-}
-
-class DotWidget extends StatelessWidget {
-  const DotWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
-      child: Container(
-        height: 20,
-        width: 20,
-        decoration: BoxDecoration(
-          color: const Color(0xFF1D1D1D),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: green, width: 2),
-        ),
-        child: Center(
-          child: Container(
-            height: 8,
-            width: 8,
-            decoration: BoxDecoration(
-                color: green, borderRadius: BorderRadius.circular(8)),
-          ),
+  Widget normalDot(int id) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          _currentPage = id;
+          _pageController.jumpToPage(id);
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(right: 8.0),
+        child: Container(
+          height: 15,
+          width: 15,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15), color: grey),
         ),
       ),
     );

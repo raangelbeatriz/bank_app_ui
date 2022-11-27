@@ -14,14 +14,16 @@ class SlideTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double top = activePage ? 50 : 90;
     return AnimatedContainer(
+      curve: Curves.easeOutQuint,
       margin: EdgeInsets.only(top: top),
-      duration: const Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 300),
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage(
-              image,
-            ),
-            fit: BoxFit.contain),
+          image: AssetImage(
+            image,
+          ),
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }
