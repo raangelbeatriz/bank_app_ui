@@ -3,6 +3,7 @@ import 'package:bank_app_ui/app/core/utils/size_extension.dart';
 import 'package:bank_app_ui/app/pages/splash_page/widget/slide_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/routes/routes.dart';
 import 'widget/dot_widget.dart';
 
 class SplashPage extends StatefulWidget {
@@ -102,37 +103,40 @@ class _SplashPageState extends State<SplashPage> {
                   children: [
                     InkWell(
                       onTap: () {
-                        setState(() {
-                          if (_currentPage != _listSlide.length - 1) {
-                            setState(() {
-                              _currentPage++;
-                            });
-                          }
-                        });
+                        if (_currentPage != _listSlide.length - 1) {
+                          setState(() {
+                            _currentPage++;
+                            _pageController.jumpToPage(_currentPage);
+                          });
+                        } else {
+                          Navigator.pushNamed(context, Routes.homePage);
+                        }
                       },
-                      child: InkWell(
-                        onTap: () {},
-                        child: const Text(
-                          'Continue',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
+                      child: const Text(
+                        'Continue',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                     ),
-                    RichText(
-                      text: TextSpan(
-                          text: 'Skip',
-                          style: TextStyle(color: grey, fontSize: 20),
-                          children: [
-                            WidgetSpan(
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 3.0),
-                                child: Icon(
-                                  Icons.arrow_forward,
-                                  color: grey,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.homePage);
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                            text: 'Skip',
+                            style: TextStyle(color: grey, fontSize: 20),
+                            children: [
+                              WidgetSpan(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 3.0),
+                                  child: Icon(
+                                    Icons.arrow_forward,
+                                    color: grey,
+                                  ),
                                 ),
-                              ),
-                            )
-                          ]),
+                              )
+                            ]),
+                      ),
                     ),
                   ],
                 ),
