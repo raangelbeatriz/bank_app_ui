@@ -1,3 +1,4 @@
+import 'package:bank_app_ui/app/core/utils/colors.dart';
 import 'package:bank_app_ui/app/core/utils/size_extension.dart';
 import 'package:bank_app_ui/app/pages/splash_page/widget/slide_page.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1D1D1D),
+      backgroundColor: primary,
       body: SafeArea(
         child: SizedBox(
           height: context.heigth,
@@ -108,16 +109,16 @@ class _SplashPageState extends State<SplashPage> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                           text: 'Skip',
-                          style: TextStyle(color: Colors.grey, fontSize: 20),
+                          style: TextStyle(color: grey, fontSize: 20),
                           children: [
                             WidgetSpan(
                               child: Padding(
-                                padding: EdgeInsets.only(left: 3.0),
+                                padding: const EdgeInsets.only(left: 3.0),
                                 child: Icon(
                                   Icons.arrow_forward,
-                                  color: Colors.grey,
+                                  color: grey,
                                 ),
                               ),
                             )
@@ -146,8 +147,8 @@ class NormalDot extends StatelessWidget {
       child: Container(
         height: 15,
         width: 15,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Colors.grey),
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.circular(15), color: grey),
       ),
     );
   }
@@ -168,15 +169,14 @@ class DotWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: const Color(0xFF1D1D1D),
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: const Color(0xFF03CD4C), width: 2),
+          border: Border.all(color: green, width: 2),
         ),
         child: Center(
           child: Container(
             height: 8,
             width: 8,
             decoration: BoxDecoration(
-                color: const Color(0xFF03CD4C),
-                borderRadius: BorderRadius.circular(8)),
+                color: green, borderRadius: BorderRadius.circular(8)),
           ),
         ),
       ),
