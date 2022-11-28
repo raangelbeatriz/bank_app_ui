@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:bank_app_ui/app/core/utils/size_extension.dart';
 
 class SlideTileWidget extends StatelessWidget {
   final String image;
