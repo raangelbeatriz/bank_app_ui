@@ -109,7 +109,7 @@ class _SplashPageState extends State<SplashPage> {
                             _pageController.jumpToPage(_currentPage);
                           });
                         } else {
-                          Navigator.pushNamed(context, Routes.homePage);
+                          Navigator.pushNamed(context, Routes.homeBasePage);
                         }
                       },
                       child: const Text(
@@ -119,7 +119,7 @@ class _SplashPageState extends State<SplashPage> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, Routes.homePage);
+                        Navigator.pushNamed(context, Routes.homeBasePage);
                       },
                       child: RichText(
                         text: TextSpan(

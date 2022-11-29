@@ -8,39 +8,44 @@ class TransactionWidget extends StatelessWidget {
     Key? key,
     required this.icon,
     required this.label,
+    required this.onTap,
   }) : super(key: key);
 
   final IconData icon;
   final String label;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: context.heigth * 0.12,
-      width: context.width * 0.2,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            height: context.heigth * 0.09,
-            decoration: BoxDecoration(
-                color: darkGrey, borderRadius: BorderRadius.circular(5)),
-            child: Center(
-              child: Icon(
-                icon,
-                color: Colors.white,
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(
+        height: context.heigth * 0.12,
+        width: context.width * 0.2,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: context.heigth * 0.09,
+              decoration: BoxDecoration(
+                  color: darkGrey, borderRadius: BorderRadius.circular(5)),
+              child: Center(
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-          Text(
-            label,
-            style: const TextStyle(color: Colors.white),
-            maxLines: 2,
-            overflow: TextOverflow.visible,
-            textAlign: TextAlign.center,
-          )
-        ],
+            Text(
+              label,
+              style: const TextStyle(color: Colors.white),
+              maxLines: 2,
+              overflow: TextOverflow.visible,
+              textAlign: TextAlign.center,
+            )
+          ],
+        ),
       ),
     );
   }

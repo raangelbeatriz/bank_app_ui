@@ -1,12 +1,14 @@
-import 'package:bank_app_ui/app/core/utils/colors.dart';
 import 'package:bank_app_ui/app/core/utils/size_extension.dart';
-import 'package:bank_app_ui/app/models/last_transaction.dart';
-import 'package:bank_app_ui/app/pages/home_page/widget/last_transaction_widget.dart';
-import 'package:bank_app_ui/app/pages/home_page/widget/transaction_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/routes/routes.dart';
+import '../../core/utils/colors.dart';
+import '../../models/last_transaction.dart';
+import 'widget/last_transaction_widget.dart';
+import 'widget/transaction_widget.dart';
+
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,50 +43,6 @@ class HomePage extends StatelessWidget {
           moneySaved: false)
     ];
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: green,
-        onPressed: () {},
-        child: const Icon(
-          Icons.flip,
-          color: Colors.black,
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        color: Colors.white,
-        elevation: 20,
-        child: IconTheme(
-          data: IconThemeData(color: ligthGrey),
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.home),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.stacked_line_chart),
-                ),
-                const SizedBox(
-                  width: 24,
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.favorite),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.person),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
       body: SizedBox(
         height: context.heigth,
         child: Column(
@@ -149,6 +107,7 @@ class HomePage extends StatelessWidget {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Icon(
                             Icons.attach_money,
@@ -156,7 +115,7 @@ class HomePage extends StatelessWidget {
                             size: 60,
                           ),
                           const Text(
-                            '450,285',
+                            '1000',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -180,23 +139,24 @@ class HomePage extends StatelessWidget {
                       ),
                       Wrap(
                         spacing: 10,
-                        children: const [
+                        children: [
                           TransactionWidget(
-                            label: 'Transefer',
-                            icon: Icons.north_west,
-                          ),
+                              label: 'Transefer',
+                              icon: Icons.north_west,
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, Routes.transferPage);
+                              }),
                           TransactionWidget(
-                            label: 'Receive',
-                            icon: Icons.south_east,
-                          ),
+                              label: 'Receive',
+                              icon: Icons.south_east,
+                              onTap: () {}),
                           TransactionWidget(
-                            label: 'Top Up',
-                            icon: Icons.add_box_outlined,
-                          ),
+                              label: 'Top Up',
+                              icon: Icons.add_box_outlined,
+                              onTap: () {}),
                           TransactionWidget(
-                            label: 'More',
-                            icon: Icons.apps,
-                          ),
+                              label: 'More', icon: Icons.apps, onTap: () {}),
                         ],
                       ),
                     ],
