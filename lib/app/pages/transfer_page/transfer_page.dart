@@ -1,5 +1,6 @@
 import 'package:bank_app_ui/app/core/utils/colors.dart';
 import 'package:bank_app_ui/app/core/utils/size_extension.dart';
+import 'package:bank_app_ui/app/pages/transfer_page/wigdet/calculator_button.dart';
 import 'package:flutter/material.dart';
 
 class TransferPage extends StatelessWidget {
@@ -43,7 +44,7 @@ class TransferPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(right: 20.0, left: 20.0, bottom: 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const CircleAvatar(
@@ -52,9 +53,15 @@ class TransferPage extends StatelessWidget {
                 'https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg?w=2000',
               ),
             ),
+            SizedBox(
+              height: context.heigth * 0.02,
+            ),
             const Text(
               'Fernanda Macedo',
               style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            SizedBox(
+              height: context.heigth * 0.01,
             ),
             Text(
               'HSBC - 4267 0987 1234 56789',
@@ -86,7 +93,7 @@ class TransferPage extends StatelessWidget {
               // height: context.heigth * 0.55,
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3, childAspectRatio: 1),
+                    crossAxisCount: 3, childAspectRatio: 1.2),
                 itemCount: _calculatorItems.length,
                 itemBuilder: ((context, index) {
                   return CalculatorButton(
@@ -111,37 +118,6 @@ class TransferPage extends StatelessWidget {
               ),
             )
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CalculatorButton extends StatelessWidget {
-  const CalculatorButton({
-    Key? key,
-    required this.item,
-    required this.controller,
-  }) : super(key: key);
-  final String item;
-  final TextEditingController controller;
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        if (item == 'x') {
-          controller.text = '';
-        } else {
-          controller.text += item;
-          print(controller.text);
-        }
-      },
-      child: SizedBox(
-        child: Center(
-          child: Text(
-            item,
-            style: const TextStyle(color: Colors.white, fontSize: 35),
-          ),
         ),
       ),
     );
