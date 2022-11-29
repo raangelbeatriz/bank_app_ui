@@ -48,6 +48,7 @@ class _HomeBasePageState extends State<HomeBasePage> {
         ),
         bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
+          notchMargin: 10,
           color: Colors.white,
           elevation: 20,
           child: IconTheme(

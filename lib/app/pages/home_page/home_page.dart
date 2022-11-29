@@ -185,6 +185,7 @@ class HomePage extends StatelessWidget {
             ),
             Expanded(
               child: ListView.separated(
+                  padding: EdgeInsets.zero,
                   itemCount: lastTransactionList.length,
                   separatorBuilder: (BuildContext context, int index) =>
                       const Padding(
