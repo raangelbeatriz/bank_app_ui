@@ -79,7 +79,7 @@ class _SplashPageState extends State<SplashPage> {
                         height: context.heigth * 0.03,
                       ),
                       const Text(
-                        'Let\'s transfer and receive your money with esay way',
+                        'Let\'s transfer and receive your money with easy way',
                         style: TextStyle(color: Colors.white, fontSize: 17),
                       ),
                       SizedBox(
