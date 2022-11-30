@@ -3,6 +3,8 @@ import 'package:bank_app_ui/app/core/utils/size_extension.dart';
 import 'package:bank_app_ui/app/pages/transfer_page/wigdet/calculator_button.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/widgets/circle_avatar_widget.dart';
+
 class TransferPage extends StatelessWidget {
   const TransferPage({Key? key}) : super(key: key);
 
@@ -47,11 +49,11 @@ class TransferPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const CircleAvatar(
-              radius: 40,
-              backgroundImage: NetworkImage(
-                'https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg?w=2000',
-              ),
+            const CircleAvatarWidget(
+              radiusBorder: 46,
+              radiusInnerCircle: 40,
+              image:
+                  'https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg?w=2000',
             ),
             SizedBox(
               height: context.heigth * 0.02,
@@ -71,7 +73,7 @@ class TransferPage extends StatelessWidget {
               padding: const EdgeInsets.only(left: 8.0, right: 8.0),
               child: TextField(
                 controller: textController,
-                //readOnly: true,
+                readOnly: true,
                 style: const TextStyle(color: Colors.white, fontSize: 35),
                 decoration: InputDecoration(
                   fillColor: ligthGrey,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/routes/routes.dart';
 import '../../core/utils/colors.dart';
+import '../../core/widgets/circle_avatar_widget.dart';
 import '../../models/last_transaction.dart';
 import 'widget/last_transaction_widget.dart';
 import 'widget/transaction_widget.dart';
@@ -66,11 +67,11 @@ class HomePage extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const CircleAvatar(
-                            radius: 35,
-                            backgroundImage: NetworkImage(
-                              'https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg?w=2000',
-                            ),
+                          const CircleAvatarWidget(
+                            radiusBorder: 35,
+                            radiusInnerCircle: 30,
+                            image:
+                                'https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg?w=2000',
                           ),
                           SizedBox(
                             width: context.width * 0.03,
